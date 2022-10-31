@@ -1,0 +1,6 @@
+dlib @ https://github.com/jloh02/dlib/releases/download/v19.22/dlib-19.22.99-cp310-cp310-win_amd64.whl
+imutils==0.5.4
+numpy==1.23.4
+opencv-contrib-python==4.6.0.66
+opencv-python==4.6.0.66
+scipy==1.9.3
