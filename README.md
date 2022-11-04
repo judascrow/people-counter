@@ -11,3 +11,19 @@ pip install -r requirements.txt
 ```
 python people_counter.py --prototxt mobilenet_ssd/MobileNetSSD_deploy.prototxt --model mobilenet_ssd/MobileNetSSD_deploy.caffemodel --input videos/example_01.mp4 --output output/output_01.avi
 ```
+
+### Run Web Monitor
+
+```
+cd web
+npm install
+```
+
+- set your firebase Config in src/firebase.js
+- set your firebase REACT_APP_FIREBASE_KEY in .env
+
+```
+npm run dev
+```
+
+- http://127.0.0.1:5173
