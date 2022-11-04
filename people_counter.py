@@ -9,6 +9,10 @@ import imutils
 import time
 import dlib
 import cv2
+import datetime
+
+from firebase import firebase
+firebase = firebase.FirebaseApplication('https://opencv-1b5bd-default-rtdb.firebaseio.com/', None)
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -67,7 +71,7 @@ totalDown = 0
 totalUp = 0
 # start the frames per second throughput estimator
 fps = FPS().start()
-
+startTime = datetime.datetime.now()
 # loop over frames from the video stream
 while True:
 	# grab the next frame and handle if we are reading from either
@@ -77,6 +81,13 @@ while True:
 	# if we are viewing a video and we did not grab a frame then we
 	# have reached the end of the video
 	if args["input"] is not None and frame is None:
+		data = { 
+			'totalOut': totalUp,
+			'totalIn': totalDown,
+			'startTime': startTime,
+			'endTime': datetime.datetime.now(),
+		}
+		result = firebase.post('/people_counter', data)
 		break
 	# resize the frame to have a maximum width of 500 pixels (the
 	# less data we have, the faster we can process it), then convert
@@ -210,8 +221,8 @@ while True:
 	# construct a tuple of information we will be displaying on the
 	# frame
 	info = [
-		("Up", totalUp),
-		("Down", totalDown),
+		("Out", totalUp),
+		("In", totalDown),
 		("Status", status),
 	]
 	# loop over the info tuples and draw them on our frame
@@ -228,6 +239,13 @@ while True:
 	key = cv2.waitKey(1) & 0xFF
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
+		data = { 
+			'totalOut': totalUp,
+			'totalIn': totalDown,
+			'startTime': startTime,
+			'endTime': datetime.datetime.now(),
+		}
+		result = firebase.post('/people_counter', data)
 		break
 	# increment the total number of frames processed thus far and
 	# then update the FPS counter
