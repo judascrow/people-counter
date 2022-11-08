@@ -4,7 +4,7 @@ charset-normalizer==2.1.1
 crypto==1.4.1
 cryptography==38.0.3
 Deprecated==1.2.13
-dlib @ https://github.com/jloh02/dlib/releases/download/v19.22/dlib-19.22.99-cp310-cp310-win_amd64.whl
+# dlib @ https://github.com/jloh02/dlib/releases/download/v19.22/dlib-19.22.99-cp310-cp310-win_amd64.whl
 gcloud==0.18.3
 googleapis-common-protos==1.56.4
 httplib2==0.21.0
