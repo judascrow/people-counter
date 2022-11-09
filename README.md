@@ -1,9 +1,16 @@
 # people-counter
 
 - Install all the required Python dependencies:
+- for windows
 
 ```
 pip install -r requirements.txt
+```
+
+- for mac
+
+```
+pip install -r requirements_macos.txt
 ```
 
 - To run inference on a test video file, head into the directory/use the command:
